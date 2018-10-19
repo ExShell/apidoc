@@ -7,36 +7,27 @@
 ## 接口列表
 | 接口数据类型 | 请求方法 | 类型     | 描述  | 需要验签  |
 | ------------ | ----- | ------ | ----- | ----- | 
-| 系统信息       | [GET /v1/pub/timestamp](#查询当前系统时间)  | GET | 查询当前系统时间  |N |
-| 交易品种信息       | [GET /v1/pub/symbols](#交易品种的计价货币及报价精度)  | GET | 交易品种的计价货币和报价精度  |N |
-| 交易品种信息       | [GET /v1/pub/currencies](#交易币种列表)  | GET | 交易币种列表  |N |
-| 市场行情       | [GET /v1/mkt/last24hr](#单个交易对最新成交记录)  | GET | 单个symbol最新成交记录 | N |
-| 市场行情       | [GET /v1/mkt/tradeHistory](#单个symbol批量成交记录)  | GET | 单个symbol批量成交记录 | N |
-| 市场行情       | [GET /v1/mkt/kline](#获取K线数据)  | GET | 获取K线数据  | N |
+| 系统信息       | [GET /v1/pub/timestamp](#查询当前系统时间)  | GET | 查询当前系统时间  |N | 1
+| 交易品种信息       | [GET /v1/pub/symbols](#交易品种的计价货币及报价精度)  | GET | 交易品种的计价货币和报价精度  |N |1
+| 交易品种信息       | [GET /v1/pub/currencies](#交易币种列表)  | GET | 交易币种列表  |N | 1
+| 市场行情       | [GET /v1/mkt/last24hr](#单个交易对最新成交记录)  | GET | 单个symbol最新成交记录 | N |1
+| 市场行情       | [GET /v1/mkt/tradeHistory](#单个symbol批量成交记录)  | GET | 单个symbol批量成交记录 | N |1
+| 市场行情       | [GET /v1/mkt/kline](#获取K线数据)  | GET | 获取K线数据  | N | 1
 | 市场行情       | [GET /v1/mkt/last24hr](#24小时交易聚合行情(单个交易对))  | GET | 24小时交易聚合行情(单个交易对)  |N |
-| 市场行情       | [GET /v1/mkt/aggregated](#获取聚合行情)  | GET | 24小时交易最优报价聚合行情(单个交易对)  | N |
-| 市场行情       | [GET /v1/mkt/tickers)](#get-markettickers)  | GET | 全部交易对的交易行情 | N |
-| 市场行情       | [GET /v1/mkt/depth](#市场深度行情MBP)  | GET | 市场深度行情MBP（单个交易对） | N |
+| 市场行情       | [GET /v1/mkt/aggregated](#获取聚合行情)  | GET | 24小时交易最优报价聚合行情(单个交易对)  | N | 1
+| 市场行情       | [GET /v1/mkt/tickers)](#get-markettickers)  | GET | 全部交易对的交易行情 | N | 1
+| 市场行情       | [GET /v1/mkt/depth](#市场深度行情MBP)  | GET | 市场深度行情MBP（单个交易对） | N | 1
 |账户信息	|[GET /v1/priv/accounts](#查询用户的所有账户状态)|	GET| 查询用户的所有账户状态| Y|
 |账户信息	|[GET /v1/priv/accounts/{accountId}/balance](#查询主站指定账户的余额)|GET|	查询指定账户余额	|Y|
-|交易	|[POST /v1/priv/orders](#主站下单)|POST|	下单	|Y|
+|交易	|[POST /v1/priv/orders/place](#主站下单)|POST|	下单	|Y|
 |交易	|[POST /v1/priv/orders/{orderId}/cancel](#申请撤销一个订单请求)|POST|	按order-id撤销一个订单	|Y|
 |交易	|[POST /v1/priv/orders/batchCancel](#批量撤销订单)|POST|	按order_id, 批量撤销订单（最多50个)	|Y|
 |交易	|[POST /v1/priv/orders/batchCancelEx](#批量撤销未成交订单)|POST|	批量撤销未成交订单（最多100个) 	|Y|
-|用户订单信息	|[GET /v1/priv/orders/{orderId})](#根据order-id查询订单详情)|GET|根据order-id查询订单详情|Y|
-|用户订单信息	|[GET /v1/priv/orders/{orderId}/matchResults](#查询某个订单的成交明细)	|GET| 根据order-id查询订单的成交明细	|Y|
-|用户订单信息	|[GET /v1/priv/orders](#查询当前委托或	历史委托)	|GET|查询用户当前委托或历史委托订单 (最多100个)	|Y|
-|用户订单信息	|[GET /v1/priv/matchResults](#查询当前成交历史成交)	|GET|查询用户当前成交或历史成交|Y|
+|用户订单信息	|[GET /v1/priv/orders/{orderId}](#根据order-id查询订单详情)|GET|根据order-id查询订单详情|Y| 1
+|用户订单信息	|[GET /v1/priv/orders/{orderId}/matchResults](#查询某个订单的成交明细)	|GET| 根据order-id查询订单的成交明细	|Y| 1
+|用户订单信息	|[GET /v1/priv/orders](#查询当前委托或历史委托)	|GET|查询用户当前委托或历史委托订单 (最多100个)	|Y| 1
+|用户订单信息	|[GET /v1/priv/matchResults](#查询当前成交历史成交)	|GET|查询用户当前成交或历史成交|Y| 1
 |用户订单信息	|[GET /v1/priv/order/openOrders](#获取所有当前未成交订单)	|GET|查询用户当前未成交订单 (最多500个)|Y|
-|充提币	|[POST /v1/priv/withdraw](#申请提现虚拟币)	|POST|申请提币|	|Y|
-|充提币	|[POST /v1/priv/withdraw/{withdrawId}/cancel](#申请取消提现虚拟币)|POST| 	撤销提币申请|Y|
-|充提币	|[GET /v1/priv/dwHistory](#查询虚拟币充提记录)	|GET|查询充提记录|Y|
-|杠杆交易	|[POST /v1/priv/loan/transferIn](#现货账户借贷账户转账)|POST|从币币交易账户划转至杠杆账户|Y|
-|杠杆交易	|[POST /v1/priv/loan/transferOut](#现货账户借贷账户转账)|POST|从杠杆账户划转至币币交易账户|Y|
-|杠杆交易	|[POST /v1/priv/loan/orders](#申请借贷)	|POST|申请借贷|Y|
-|杠杆交易	|[POST /v1/priv/loan/orders/{orderId}/refine](#归还借贷)	|POST|归还借贷|Y|
-|杠杆交易	|[GET /v1/priv/loan/orders](#借贷订单)	|GET|查询借贷记录|Y|
-|杠杆交易	|[GET /v1/priv/loan/balance](#借贷账户详情)	|GET|查询杠杆账户余额|Y|
 
 
 ### 基本信息API
@@ -63,7 +54,7 @@
 }
 ```
 
-####  GET /v1/pub/symbols <a name="交易品种的计价货币和报价精度">查询ExShell支持的所有交易对及精度</a>
+####  GET /v1/pub/symbols <a name="交易品种的计价货币及报价精度">查询ExShell支持的所有交易对及精度</a>
 
  请求参数:
 (无)
@@ -99,7 +90,7 @@
 }
 ```
 
-####  GET /v1/pub/currencies <a name="交易币种列表">查询ExShell支持的所有币种</a>
+####  GET /v1/pub/currencies <a name="交易币种列表">交易币种列表</a>
 
  请求参数:
 
@@ -319,7 +310,7 @@ tick 说明:
 注：当交易对尚未产生成交时，返回的数据里面 `open` `close` `high` `low` `amount` `count` `vol` 的值都为 `null`
 
 
-#### GET /v1/mkt/depth <a name="市场深度行情">获取 Market Depth 数据</a>
+#### GET /v1/mkt/depth <a name="市场深度行情MBP">获取 Market Depth 数据</a>
 
 请求参数:
 
@@ -418,7 +409,7 @@ tick 说明:
 ```
 
 
-#### GET /v1/mkt/trade <a name="单个交易对最新成交记录">获取最新成交数据</a>
+#### GET /v1/mkt/trade <a name="单个交易对最新成交记录">单个symbol最新成交记录</a>
 
 请求参数:
 
@@ -484,7 +475,7 @@ tick 说明：
   "err-msg": "invalid symbol"
 }
 ```
-#### GET /v1/mkt/tradeHistory <a name="单个交易对批量成交记录">批量获取最近的成交记录</a>
+#### GET /v1/mkt/tradeHistory <a name="单个交易对批量成交记录">单个symbol批量成交记录</a>
 
 请求参数:
 
@@ -719,7 +710,7 @@ list字段说明
 
 ## 交易API
 
-#### POST /v1/priv/orders <a name="pro站下单">Pro站下单</a>
+#### POST /v1/priv/orders/place <a name="主站下单">下单</a>
 
 #### 请求参数
 
@@ -1139,413 +1130,5 @@ list字段说明
     }
   ]
 }
-```
-
-## 借贷交易API （重要：如果使用借贷资产交易，请在下单接口/v1/priv/orders请求参数source中填写‘margin-api’）
-
-` 目前仅支持 USDT 交易区和 BTC 交易区部分交易对 `
-
-#### POST /v1/priv/loan/transferIn  现货账户划入至借贷账户
-#### POST /v1/priv/loan/transferOut  <a name="借贷账户现货账户转账">借贷账户划出至现货账户</a>
-
-请求参数
-
-| 参数名称  | 是否必须  | 类型     | 描述     | 默认值  | 取值范围 |
-| ----- | ----- | ------ | ----- | ---- | -------- |
-| symbol | true  | string | 交易对   |      |      |
-| currency  | true  | string | 币种 |      |    |
-| amount      | true | string | 金额    |      |    |
-
-
-响应数据:
-
-| 参数名称 | 是否必须 | 数据类型 | 描述   | 取值范围 |
-| ---- | ---- | ---- | ---- | ---- |
-| data | true | long | 划转ID  |      |
-
-请求响应例子:
 
 ```
-/* POST /v1/priv/loan/transferIn 
-{
-  "symbol": "ethusdt",
-  "currency": "eth",
-  "amount": "1.0"
-} */
-{
-  "status": "ok",
-  "data": 1000
-}
-```
-
-
-#### POST/v1/priv/loan/orders <a name="申请借贷">申请借贷</a>
-
-请求参数
-
-| 参数名称   | 是否必须  | 类型     | 描述    | 默认值  | 取值范围  |
-| ----- | ----- | ------ |  --------------- | ---- | -------- |
-| symbol | true  | string | 交易对   |      |      |
-| currency  | true  | string | 币种 |      |    |
-| amount  | true | string | 金额       |      |   |
-
-
-响应数据:
-
-| 参数名称 | 是否必须 | 数据类型 | 描述   | 取值范围 |
-| ---- | ---- | ---- | ---- | ---- |
-| data | true | long | 订单号  |      |
-
-请求响应例子:
-
-```
-/* POST/v1/priv/loan/orders {
-   "amount": "10.1",
-   "symbol": "ethusdt",
-   "currency": "eth"
-} */
-{
-  "status": "ok",
-  "data": 59378
-}
-```
-
-
-#### POST /v1/priv/loan/orders/{orderId}/refine <a name="归还借贷">归还借贷</a>
-
-请求参数
-
-| 参数名称       | 是否必须  | 类型     | 描述   | 默认值  | 取值范围   |
-| ----- | ----- | ------ | -----  | ---- | --------- |
-| order-id | true  | long | 借贷订单 ID，写在path中  |      |      |
-| amount   | true | string | 还款量   |      |       |
-
-
-响应数据:
-
-| 参数名称 | 是否必须 | 数据类型 | 描述   | 取值范围 |
-| ---- | ---- | ---- | ---- | ---- |
-| data | true | long | 订单号  |      |
-
-请求响应例子:
-
-```
-/* POST /v1/priv/loan/orders/59378/refine {
-   "amount": "10.1"
-}*/
-{
-  "status": "ok",
-  "data": 59378
-}
-```
-
-
-#### GET /v1/priv/loan/orders  <a name="查询借贷订单">查询借贷订单</a>
-
-请求参数
-
-| 参数名称       | 是否必须  | 类型     | 描述    | 默认值  | 取值范围   |
-| ----- | ----- | ------ |  -------  | ---- |  ----  |
-| symbol | true | string | 交易对  |  |  |
-| start-date | false | string | 查询开始日期, 日期格式yyyy-mm-dd  |     |    |
-| end-date | false | string | 查询结束日期, 日期格式yyyy-mm-dd  |    |    |
-| states | false | string | 状态 |     |   |
-| from   | false | string | 查询起始 ID  |    |     |
-| direct | false | string | 查询方向     |    | prev 向前，next 向后 |
-| size   | false | string | 查询记录大小  |    |     |
-
-
-响应数据:
-
-| 参数名称 | 是否必须 | 数据类型 | 描述 | 取值范围 |
-|-----|-----|-----|-----|------|
-|   id  |  true  |  long  |  订单号 | |
-|   user-id  |  true  |  long  | 用户ID | |
-|   account-id  |  true  |  long  |  账户ID | |
-|   symbol  |  true  |  string  |  交易对 | |
-|   currency  |  true  |  string  |  币种 | |
-| loan-amount | true |string | 借贷本金总额 | |
-| loan-balance | true | string | 未还本金 | |
-| interest-rate | true | string | 利率 | |
-| interest-amount | true | string | 利息总额 | |
-| interest-balance | true | string | 未还利息 | |
-| created-at | true | long | 借贷发起时间 | |
-| accrued-at | true | long | 最近一次计息时间 | |
-| state | true | string | 订单状态 |created 未放款，accrual 已放款，cleared 已还清，invalid 异常|
-
-请求响应例子:
-
-```
-/* GET /v1/priv/loan/orders?symbol=btcusdt 
-
-*/
-{
-  "status": "ok",
-  "data": [
-    {
-      "loan-balance": "0.100000000000000000",
-      "interest-balance": "0.000200000000000000",
-      "interest-rate": "0.002000000000000000",
-      "loan-amount": "0.100000000000000000",
-      "accrued-at": 1511169724531,
-      "interest-amount": "0.000200000000000000",
-      "symbol": "ethbtc",
-      "currency": "btc",
-      "id": 394,
-      "state": "accrual",
-      "account-id": 37747,
-      "user-id": 686481,
-      "created-at": 7511169724531
-    }
-  ]
-}
-
-```
-
-
-#### GET /v1/priv/loan/balance <a name="查询借贷账户详情">查询借贷账户详情</a>
-
-请求参数
-
-| 参数名称 | 是否必须 | 类型 | 描述 | 默认值 | 取值范围 |
-|-----|-----|-----|-----|-----|-----|
-| symbol | false | string | 交易对，作为get参数  |  |  |
-
-
-响应数据:
-
-| 参数名称 | 是否必须 | 数据类型 | 描述 | 取值范围 |
-|-----|-----|-----|-----|------|
-| symbol  |  true  |  string  |  交易对 | |
-| state  |  true  |  string  |  账户状态 |working,fl-sys,fl-mgt,fl-end |
-| risk-rate | true | object | 风险率 | |
-| fl-price | true | string | 爆仓价 | |
-| list | true | array | 子账户列表 | |
-
-请求响应例子:
-
-```
-/* GET /v1/priv/loan/balance?symbol=btcusdt
-
-*/
-{
-    "status": "ok",
-    "data": [
-        {
-            "id": 18264,
-            "type": "margin",
-            "state": "working",
-            "symbol": "btcusdt",
-            "fl-price": "0",
-            "fl-type": "safe",
-            "risk-rate": "275.952571086994250554",
-            "list": [
-                {
-                    "currency": "btc",
-                    "type": "trade",
-                    "balance": "6168.533000000000000000"
-                },
-                {
-                    "currency": "btc",
-                    "type": "frozen",
-                    "balance": "0.000000000000000000"
-                },
-                {
-                    "currency": "btc",
-                    "type": "loan",
-                    "balance": "-2.433000000000000000"
-                },
-                {
-                    "currency": "btc",
-                    "type": "interest",
-                    "balance": "-0.000533000000000000"
-                },
-                {
-                    "currency": "usdt",
-                    "type": "trade",//借贷账户可用
-                    "balance": "9313.534000000000000000"
-                },
-                {
-                    "currency": "usdt",
-                    "type": "frozen",//借贷账户冻结
-                    "balance": "0.000000000000000000"
-                },
-                {
-                    "currency": "usdt",
-                    "type": "loan",//已借贷
-                    "balance": "-140.234099999999999920"
-                },
-                {
-                    "currency": "usdt",
-                    "type": "interest",//usdt待还利息
-                    "balance": "-0.931206660000000000"
-                },
-                {
-                    "currency": "btc",
-                    "type": "transfer-out-available",//可转btc
-                    "balance": "8163.872174670000000000"
-                },
-                { "currency": "usdt",
-                    "type": "transfer-out-available",//可转usdt
-                    "balance": "9313.534000000000000000"
-                },
-                {
-                    "currency": "btc",
-                    "type": "loan-available",//可借btc
-                    "balance": "2161.876538350676000000"
-                },
-                {
-                    "currency": "usdt",
-                    "type": "loan-available",//可借usdt
-                    "balance": "92859.165900000000000080"
-                }
-            ]
-        }
-    ]
-}
-
-```
-
-
-## 虚拟币提现API
-
-> **仅支持提现到【ExShell提币地址列表中的提币地址】**
-
-
-####  POST /v1/priv/withdraw <a name="申请提现虚拟币">申请提现虚拟币</a>
-
-请求参数:
-
-| 参数名称       | 是否必须 | 类型     | 描述     | 默认值  | 取值范围 |
-| ---------- | ---- | ------ | ------ | ---- | ---- |
-| address | true | string   | 提现地址 |      | 仅支持在官网上相应币种[可信地址列表](https://www.exshell.com/zh-cn/withdraw_address/) 中的地址  |
-| amount     | true | string | 提币数量   |      |      |
-| currency | true | string | 资产类型   |   |  btc, ltc, bch, eth, etc ...(exshell支持的币种) |
-| fee     | false | string | 转账手续费  |      |      |
-| addr-tag|false | string | 虚拟币共享地址tag，适用于xrp，xem，bts，steem，eos，xmr |  | 格式, "123"类的整数字符串|
-
-响应数据: 
-
-| 参数名称 | 是否必须  | 数据类型 | 描述   | 取值范围 |
-| ---- | ----- | ---- | ---- | ---- |
-| data | false | long | 提现ID |      |
-
-请求响应例子:
-
-```
-/* POST /v1/priv/withdraw*/
-{
-  "address": "0xde809f2802306290921060314715629080e2fb77",
-  "amount": "0.25",
-  "currency": "eth",
-  "fee": "0.01"
-}
-{
-  "status": "ok",
-  "data": 700
-}
-```
-
-####  POST /v1/priv/withdraw/{withdrawId}/cancel <a name="申请取消提现虚拟币">申请取消提现虚拟币</a>
-
-请求参数:
-
-| 参数名称        | 是否必须 | 类型   | 描述 | 默认值  | 取值范围 |
-| ----------- | ---- | ---- | ------------ | ---- | ---- |
-| withdraw-id | true | long | 提现ID，填在path中 |      |      |
-
-响应数据:
-
-| 参数名称 | 是否必须  | 数据类型 | 描述    | 取值范围 |
-| ---- | ----- | ---- | ----- | ---- |
-| data | false | long | 提现 ID |      |
-
-请求响应例子:
-
-```
-/* POST /v1/priv/withdraw/{withdrawId}/cancel */
-{
-  "status": "ok",
-  "data": 700 /v1/priv/dwHistory
-}
-```
-
-####  GET  /v1/priv/dwHistory <a name="查询虚拟币充提记录">查询虚拟币充提记录</a>
-
-请求参数:
-
-| 参数名称        | 是否必须 | 类型   | 描述 | 默认值  | 取值范围 |
-| ----------- | ---- | ---- | ------------ | ---- | ---- |
-| currency | true | string | 币种  |   |   |
-| type | true | string | 'deposit' or 'withdraw'  |   |   |
-| from   | true | string | 查询起始 ID  |   |   |
-| size   | true | string | 查询记录大小  |   |   |
-
-响应数据:
-
-| 参数名称 | 是否必须 | 数据类型 | 描述 | 取值范围 |
-|-----|-----|-----|-----|------|
-|   id  |  true  |  long  |   | |
-|   type  |  true  |  long  | 类型 | 'deposit' 'withdraw' |
-|   currency  |  true  |  string  |  币种 | |
-| tx-hash | true |string | 交易哈希 | |
-| amount | true | long | 个数 | |
-| address | true | string | 地址 | |
-| address-tag | true | string | 地址标签 | |
-| fee | true | long | 手续费 | |
-| state | true | string | 状态 | 状态参见下表 |
-| created-at | true | long | 发起时间 | |
-| updated-at | true | long | 最后更新时间 | |
-
-###### 虚拟币提现状态定义：
-
-| 状态 | 描述  |
-| submitted | 已提交 |
-| reexamine | 审核中 |
-| canceled  | 已撤销 |
-| pass    | 审批通过 |
-| reject  | 审批拒绝 |
-| pre-transfer | 处理中 |
-| wallet-transfer | 已汇出 |
-| wallet-reject   | 钱包拒绝 |
-| confirmed      | 区块已确认 |
-| confirm-error  | 区块确认错误 |
-| repealed       | 已撤销 |
-
-###### 虚拟币充值状态定义：
-
-|状态|描述|
-|--|--|
-|unknown|状态未知|
-|confirming|确认中|
-|confirmed|确认中|
-|safe|已完成|
-|orphan| 待确认|
-
-请求响应例子:/v1/priv/dwHistory
-
-```
-/* GET  /v1/priv/dwHistory?currency=xrp&type=deposit&from=5&size=12 */
-
-{
-    
-    "status": "ok",
-    "data": [
-      {
-        "id": 1171,
-        "type": "deposit",
-        "currency": "xrp",
-        "amount": 7.457467,
-        "address": "cae83V8d2mdoUQSwBDBdM4NHCMehRJAsbm",
-        "address-tag": "100040",
-        "fee": 0,
-        "tx-hash": "cd03094b84eafbe4bc16e7ef766ee959885ee5bcb265872baaa9c64e1cf86c2b",
-        "state": "safe",
-        "created-at": 1910912472198,
-        "updated-at": 1911145876574
-      },
-     ...
-    ]
-}
-```
-

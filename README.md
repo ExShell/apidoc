@@ -11,7 +11,7 @@
 | 交易品种信息       | [GET /v1/pub/symbols](#交易品种的计价货币及报价精度)  | GET | 交易品种的计价货币和报价精度  |N |1
 | 交易品种信息       | [GET /v1/pub/currencies](#交易币种列表)  | GET | 交易币种列表  |N | 1
 | 市场行情       | [GET /v1/mkt/last24hr](#单个交易对最新成交记录)  | GET | 单个symbol最新成交记录 | N |1
-| 市场行情       | [GET /v1/mkt/tradeHistory](#单个symbol批量成交记录)  | GET | 单个symbol批量成交记录 | N |1
+| 市场行情       | [GET /v1/mkt/tradeHistory](#单个交易对批量成交记录)  | GET | 单个symbol批量成交记录 | N |1
 | 市场行情       | [GET /v1/mkt/kline](#获取K线数据)  | GET | 获取K线数据  | N | 1
 | 市场行情       | [GET /v1/mkt/last24hr](#24小时交易聚合行情(单个交易对))  | GET | 24小时交易聚合行情(单个交易对)  |N |
 | 市场行情       | [GET /v1/mkt/aggregated](#获取聚合行情)  | GET | 24小时交易最优报价聚合行情(单个交易对)  | N | 1
@@ -634,7 +634,7 @@ tick 说明:
   ]
 }
 ```
-####  GET /v1/priv/accounts/{account-id}/balance <a name="查询主站指定账户的余额">查询主站指定账户的余额</a>
+####  GET /v1/priv/accounts/{account-id}/balance <a name="查询主站指定账户的余额">查询指定账户的余额</a>
 
 请求参数
 
@@ -759,7 +759,7 @@ list字段说明
 }
 ```
 
-####  GET /v1/priv/order/openOrders <a name="获取所有当前帐号下未成交订单">获取所有当前帐号下未成交订单</a>
+####  GET /v1/priv/order/openOrders <a name="获取所有当前未成交订单">查询用户当前未成交订单</a>
 
 ####  请求参数: 
 
@@ -812,7 +812,7 @@ list字段说明
 }
 ```
 
-####  POST /v1/priv/orders/{orderId}/cancel  <a name="申请撤销一个订单请求">申请撤销一个订单请求</a>
+####  POST /v1/priv/orders/{orderId}/cancel  <a name="申请撤销一个订单请求">按order-id撤销一个订单请求</a>
 
 请求参数: 
 
@@ -880,7 +880,7 @@ list字段说明
 }
 ```
 
-####  POST  /v1/priv/orders/batchCancelEx  <a name="批量取消未成交的订单">批量取消未成交的订单</a>
+####  POST  /v1/priv/orders/batchCancelEx  <a name="批量撤销未成交的订单">批量撤销未成交的订单</a>
 
 请求参数: 
 
@@ -1015,7 +1015,7 @@ list字段说明
 }
 ```
 
-####  GET /v1/priv/orders <a name="查询当前委托历史委托">查询当前委托、历史委托</a>
+####  GET /v1/priv/orders <a name="查询当前委托或历史委托">查询当前委托、历史委托</a>
 
 请求参数:
 

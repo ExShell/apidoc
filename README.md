@@ -10,7 +10,7 @@
 | 系统信息       | [GET /v1/pub/timestamp](#查询当前系统时间)  | GET | 查询当前系统时间  |N | 1
 | 交易品种信息       | [GET /v1/pub/symbols](#交易品种的计价货币及报价精度)  | GET | 交易品种的计价货币和报价精度  |N |1
 | 交易品种信息       | [GET /v1/pub/currencies](#交易币种列表)  | GET | 交易币种列表  |N | 1
-| 市场行情       | [GET /v1/mkt/last24hr](#单个交易对最新成交记录)  | GET | 单个symbol最新成交记录 | N |1
+| 市场行情       | [GET /v1/mkt/trade](#单个交易对最新成交记录)  | GET | 单个symbol最新成交记录 | N |1
 | 市场行情       | [GET /v1/mkt/tradeHistory](#单个交易对批量成交记录)  | GET | 单个symbol批量成交记录 | N |1
 | 市场行情       | [GET /v1/mkt/kline](#获取K线数据)  | GET | 获取K线数据  | N | 1
 | 市场行情       | [GET /v1/mkt/last24hr](#24小时交易聚合行情(单个交易对))  | GET | 24小时交易聚合行情(单个交易对)  |N |
@@ -211,7 +211,7 @@ data 说明:
 }
 ```
 
-#### GET /v1/mkt/last24hr/merged <a name="获取聚合行情">获取聚合行情(Ticker)</a>
+#### GET /v1/mkt/aggregated <a name="获取聚合行情">获取聚合行情(Ticker)</a>
 
 请求参数: 
 
@@ -249,7 +249,7 @@ tick 说明:
 请求响应示例: 
 
 ```
-/* GET /v1/mkt/last24hr/merged?symbol=ethusdt */
+/* GET /v1/mkt/aggregated?symbol=ethusdt */
 {
 "status":"ok",
 "ch":"market.ethusdt.detail.merged",
@@ -269,7 +269,7 @@ tick 说明:
   }
 }
 
-/* GET /v1/mkt/last24hr/merged?symbol=not-exist */
+/* GET /v1/mkt/aggregated?symbol=not-exist */
 {
   "ts": 1490758171271,
   "status": "error",

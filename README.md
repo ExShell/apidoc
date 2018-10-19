@@ -15,14 +15,14 @@
 | 市场行情       | [GET /v1/mkt/kline](#获取K线数据)  | GET | 获取K线数据  | N | 1
 | 市场行情       | [GET /v1/mkt/last24hr](#24小时交易聚合行情(单个交易对))  | GET | 24小时交易聚合行情(单个交易对)  |N |
 | 市场行情       | [GET /v1/mkt/aggregated](#获取聚合行情)  | GET | 24小时交易最优报价聚合行情(单个交易对)  | N | 1
-| 市场行情       | [GET /v1/mkt/tickers)](#get-markettickers)  | GET | 全部交易对的交易行情 | N | 1
+| 市场行情       | [GET /v1/mkt/tickers](#get-markettickers)  | GET | 全部交易对的交易行情 | N | 1
 | 市场行情       | [GET /v1/mkt/depth](#市场深度行情MBP)  | GET | 市场深度行情MBP（单个交易对） | N | 1
 |账户信息	|[GET /v1/priv/accounts](#查询用户的所有账户状态)|	GET| 查询用户的所有账户状态| Y|
 |账户信息	|[GET /v1/priv/accounts/{accountId}/balance](#查询主站指定账户的余额)|GET|	查询指定账户余额	|Y|
 |交易	|[POST /v1/priv/orders/place](#主站下单)|POST|	下单	|Y|
 |交易	|[POST /v1/priv/orders/{orderId}/cancel](#申请撤销一个订单请求)|POST|	按order-id撤销一个订单	|Y|
 |交易	|[POST /v1/priv/orders/batchCancel](#批量撤销订单)|POST|	按order_id, 批量撤销订单（最多50个)	|Y|
-|交易	|[POST /v1/priv/orders/batchCancelEx](#批量撤销未成交订单)|POST|	批量撤销未成交订单（最多100个) 	|Y|
+|交易	|[POST /v1/priv/orders/batchCancelEx](#批量撤销未成交的订单)|POST|	批量撤销未成交订单（最多100个) 	|Y|
 |用户订单信息	|[GET /v1/priv/orders/{orderId}](#根据order-id查询订单详情)|GET|根据order-id查询订单详情|Y| 1
 |用户订单信息	|[GET /v1/priv/orders/{orderId}/matchResults](#查询某个订单的成交明细)	|GET| 根据order-id查询订单的成交明细	|Y| 1
 |用户订单信息	|[GET /v1/priv/orders](#查询当前委托或历史委托)	|GET|查询用户当前委托或历史委托订单 (最多100个)	|Y| 1

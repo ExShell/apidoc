@@ -745,7 +745,7 @@ list字段说明
 #### 请求响应例子:
 
 ```json
-/* POST /v1/priv/orders {
+/* POST /v1/priv/orders/place {
    "account-id": "100009",
    "amount": "10.1",
    "price": "100.1",

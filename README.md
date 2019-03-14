@@ -72,22 +72,25 @@
  请求响应例子:
 
 ```
-/* GET /v1/pub/timestamp */
-{
-  "status": "ok",
-  "data": [
+/* GET /v1/pub/symbols */
+"data": [
     {
-      "base-currency": "eth",
-      "quote-currency": "usdt",
-      "symbol": "ethusdt"
+        "base-currency": "btc",
+        "quote-currency": "usdt",
+        "price-precision": 2,
+        "amount-precision": 4,
+        "symbol-partition": "main",
+        "symbol": "btcusdt"
     }
     {
-      "base-currency": "etc",
-      "quote-currency": "usdt",
-      "symbol": "etcusdt"
+        "base-currency": "eth",
+        "quote-currency": "usdt",
+        "price-precision": 2,
+        "amount-precision": 4,
+        "symbol-partition": "main",
+        "symbol": "ethusdt"
     }
   ]
-}
 ```
 
 ####  GET /v1/pub/currencies <a name="交易币种列表">交易币种列表</a>
